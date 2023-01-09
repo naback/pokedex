@@ -9,5 +9,5 @@ public class PokedexApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(PokedexApplication.class, args);
 	}
-
+	//todo criar requests e responses
 }
