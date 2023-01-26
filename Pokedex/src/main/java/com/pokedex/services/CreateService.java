@@ -39,6 +39,10 @@ public class CreateService extends BaseService {
     }
 
     private void checkCreateRequestData(CreateRequest request) throws Exception {
+        if (request.getId() == null) {
+            throw new Exception("Parameter name is null! It can't be!");
+        }
+
         if (nullOrEmpty(request.getName())) {
             throw new Exception("Parameter name is null! It can't be!");
         }
