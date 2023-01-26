@@ -1,16 +1,17 @@
 package com.pokedex.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-
-@AllArgsConstructor
-@Getter
-@Builder
 public class BaseResponse {
     private final String errorDescription;
 
     BaseResponse() {
         this.errorDescription = null;
+    }
+
+    public BaseResponse(String errorDescription) {
+        this.errorDescription = errorDescription;
+    }
+
+    public String getErrorDescription() {
+        return errorDescription;
     }
 }

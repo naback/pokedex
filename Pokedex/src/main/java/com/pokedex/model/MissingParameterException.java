@@ -1,14 +1,17 @@
 package com.pokedex.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-
-@AllArgsConstructor
-@Getter
 public class MissingParameterException extends Exception{
     private final String errorMessage;
 
     MissingParameterException() {
         this.errorMessage = null;
+    }
+
+    public MissingParameterException(String errorMessage) {
+        this.errorMessage = errorMessage;
+    }
+
+    public String getErrorMessage() {
+        return errorMessage;
     }
 }

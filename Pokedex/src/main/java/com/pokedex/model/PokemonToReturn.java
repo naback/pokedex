@@ -1,13 +1,5 @@
 package com.pokedex.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-
-@AllArgsConstructor
-@Getter
-@Builder
 public class PokemonToReturn {
     private final Long id;
     private final String name;
@@ -21,5 +13,33 @@ public class PokemonToReturn {
         this.attack = null;
         this.defense = null;
         this.stamina = null;
+    }
+
+    public PokemonToReturn(Long id, String name, Integer attack, Integer defense, Integer stamina) {
+        this.id = id;
+        this.name = name;
+        this.attack = attack;
+        this.defense = defense;
+        this.stamina = stamina;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Integer getAttack() {
+        return attack;
+    }
+
+    public Integer getDefense() {
+        return defense;
+    }
+
+    public Integer getStamina() {
+        return stamina;
     }
 }
