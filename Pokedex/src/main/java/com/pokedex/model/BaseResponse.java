@@ -8,9 +8,9 @@ import lombok.Getter;
 @Getter
 @Builder
 public class BaseResponse {
-    private final String status;
+    private final String errorDescription;
 
     BaseResponse() {
-        this.status = null;
+        this.errorDescription = null;
     }
 }
