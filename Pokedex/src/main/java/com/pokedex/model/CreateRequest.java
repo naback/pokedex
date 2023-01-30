@@ -1,11 +1,11 @@
 package com.pokedex.model;
 
 public class CreateRequest {
-    private final Long id;
-    private final String name;
-    private final Integer attack;
-    private final Integer defense;
-    private final Integer stamina;
+    private Long id;
+    private String name;
+    private Integer attack;
+    private Integer defense;
+    private Integer stamina;
 
     CreateRequest() {
         this.id = null;
@@ -41,5 +41,25 @@ public class CreateRequest {
 
     public Integer getStamina() {
         return stamina;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAttack(Integer attack) {
+        this.attack = attack;
+    }
+
+    public void setDefense(Integer defense) {
+        this.defense = defense;
+    }
+
+    public void setStamina(Integer stamina) {
+        this.stamina = stamina;
     }
 }

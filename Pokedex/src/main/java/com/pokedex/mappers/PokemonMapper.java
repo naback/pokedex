@@ -7,6 +7,5 @@ import org.mapstruct.factory.Mappers;
 
 @Mapper
 public interface PokemonMapper {
-    PokemonMapper INSTANCE = Mappers.getMapper(PokemonMapper.class);
     Pokemon createRequestToPokemon(CreateRequest request);
 }

@@ -1,10 +1,12 @@
 package com.pokedex.services;
 
+import com.google.gson.Gson;
 import com.pokedex.db.Pokemon;
 import com.pokedex.db.PokemonRepository;
 import com.pokedex.mappers.PokemonMapper;
 import com.pokedex.model.BaseResponse;
 import com.pokedex.model.CreateRequest;
+import org.mapstruct.factory.Mappers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,9 @@ public class CreateService extends BaseService {
     @Autowired
     private PokemonRepository pokemonRepository;
 
+    private PokemonMapper pokemonMapper
+            = Mappers.getMapper(PokemonMapper.class);
+
     public ResponseEntity create(CreateRequest request) {
         try {
             logger.info("starting create service");
@@ -30,12 +35,16 @@ public class CreateService extends BaseService {
             return ResponseEntity.status(200).build();
         }
         catch (Exception e) {
+            logger.error(e.getMessage());
             return ResponseEntity.status(400).body(new BaseResponse(e.getMessage()));
         }
     }
 
     private Pokemon mapFromRequestToDbObject(CreateRequest request) {
-        return PokemonMapper.INSTANCE.createRequestToPokemon(request);
+        logger.info("request object: " + new Gson().toJson(request));
+        Pokemon pokemonMapped = pokemonMapper.createRequestToPokemon(request);
+        logger.info("pokemon object: " + new Gson().toJson(pokemonMapped));
+        return pokemonMapped;
     }
 
     private void checkCreateRequestData(CreateRequest request) throws Exception {

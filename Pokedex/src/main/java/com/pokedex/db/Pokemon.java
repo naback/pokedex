@@ -47,4 +47,24 @@ public class Pokemon {
     public Integer getStamina() {
         return stamina;
     }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAttack(Integer attack) {
+        this.attack = attack;
+    }
+
+    public void setDefense(Integer defense) {
+        this.defense = defense;
+    }
+
+    public void setStamina(Integer stamina) {
+        this.stamina = stamina;
+    }
 }
