@@ -41,10 +41,7 @@ public class CreateService extends BaseService {
     }
 
     private Pokemon mapFromRequestToDbObject(CreateRequest request) {
-        logger.info("request object: " + new Gson().toJson(request));
-        Pokemon pokemonMapped = pokemonMapper.createRequestToPokemon(request);
-        logger.info("pokemon object: " + new Gson().toJson(pokemonMapped));
-        return pokemonMapped;
+        return pokemonMapper.createRequestToPokemon(request);
     }
 
     private void checkCreateRequestData(CreateRequest request) throws Exception {
