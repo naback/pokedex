@@ -1,6 +1,7 @@
 package com.pokedex.controllers;
 
 import com.pokedex.model.CreateRequest;
+import com.pokedex.model.DeleteRequest;
 import com.pokedex.services.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,5 +35,10 @@ public class PokemonController {
     @PostMapping("/create")
     private ResponseEntity createPokemon(@RequestBody CreateRequest request) {
         return createService.create(request);
+    }
+
+    @PostMapping("/delete")
+    private ResponseEntity deletePokemon(@RequestBody DeleteRequest request) {
+        return deleteService.delete(request);
     }
 }
