@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class SearchService extends BaseService {
-    public static final Logger logger = LoggerFactory.getLogger(CreateService.class);
+    public static final Logger logger = LoggerFactory.getLogger(SearchService.class);
     @Autowired
     private PokemonRepository pokemonRepository;
 
@@ -42,12 +42,6 @@ public class SearchService extends BaseService {
 
     private PokemonToReturn mapFromPokemonToPokemonToReturn(Pokemon pokemon) {
         return pokemonMapper.pokemonToPokemonToReturn(pokemon);
-    }
-
-    private void checkRetrievedData(Pokemon pokemon, String pokemonRequested) throws Exception {
-        if (pokemon == null) {
-            throw new Exception("Pokemon requested " + pokemonRequested + " not found in database!");
-        }
     }
 
     private Pokemon searchRequestedPokemon(String pokemonRequested) {

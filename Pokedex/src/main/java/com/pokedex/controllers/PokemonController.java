@@ -2,6 +2,7 @@ package com.pokedex.controllers;
 
 import com.pokedex.model.CreateRequest;
 import com.pokedex.model.DeleteRequest;
+import com.pokedex.model.UpdateRequest;
 import com.pokedex.services.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -47,5 +48,10 @@ public class PokemonController {
     @GetMapping("/search")
     public ResponseEntity searchPokemon(@RequestParam String pokemon) {
         return searchService.search(pokemon);
+    }
+
+    @PostMapping("/update")
+    public ResponseEntity updatePokemon(@RequestParam String pokemon, @RequestBody UpdateRequest request) {
+        return updateService.update(pokemon, request);
     }
 }
