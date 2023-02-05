@@ -24,14 +24,14 @@ public class SearchService extends BaseService {
 
     public ResponseEntity search(String pokemonRequested) {
         try {
-            logger.info("starting create service");
+            logger.info("starting search service");
 
             checkSearchRequestData(pokemonRequested);
             Pokemon pokemon = searchRequestedPokemon(pokemonRequested);
             checkRetrievedData(pokemon, pokemonRequested);
             PokemonToReturn pokemonToReturn = mapFromPokemonToPokemonToReturn(pokemon);
 
-            logger.info("create service finished with success");
+            logger.info("search service finished with success");
             return ResponseEntity.status(200).body(new SearchResponse(pokemonToReturn));
         }
         catch (Exception e) {
@@ -46,7 +46,7 @@ public class SearchService extends BaseService {
 
     private void checkRetrievedData(Pokemon pokemon, String pokemonRequested) throws Exception {
         if (pokemon == null) {
-            throw new Exception("Pokemon requested " + pokemonRequested + "not found in database!");
+            throw new Exception("Pokemon requested " + pokemonRequested + " not found in database!");
         }
     }
 
