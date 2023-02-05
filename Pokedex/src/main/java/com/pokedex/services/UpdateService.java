@@ -35,20 +35,30 @@ public class UpdateService extends BaseService {
     }
 
     private void updatePokemonData(UpdateRequest request, Pokemon pokemon) {
+        boolean changed = false;
+
         if (!nullOrEmpty(request.getName())) {
             pokemon.setName(request.getName());
+            changed = true;
         }
-        
+
         if (request.getAttack() != null) {
             pokemon.setAttack(request.getAttack());
+            changed = true;
         }
 
         if (request.getDefense() != null) {
             pokemon.setDefense(request.getDefense());
+            changed = true;
         }
 
         if (request.getStamina() != null) {
             pokemon.setStamina(request.getStamina());
+            changed = true;
+        }
+
+        if (changed) {
+            pokemonRepository.save(pokemon);
         }
     }
 
