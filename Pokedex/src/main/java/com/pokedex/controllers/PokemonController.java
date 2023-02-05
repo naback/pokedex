@@ -43,4 +43,9 @@ public class PokemonController {
     private ResponseEntity listPokemon() {
         return listService.list();
     }
+
+    @GetMapping("/search")
+    public ResponseEntity searchPokemon(@RequestParam String pokemon) {
+        return searchService.search(pokemon);
+    }
 }
