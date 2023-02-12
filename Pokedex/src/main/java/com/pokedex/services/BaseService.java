@@ -1,6 +1,5 @@
 package com.pokedex.services;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pokedex.db.Pokemon;
 
 public class BaseService {
