@@ -31,7 +31,7 @@ public class CreateServiceTest {
         var pokemon = Util.generateMappedPokemonFromRequest(request);
         var response = ResponseEntity.status(200).build();
         Mockito.when(mapper.createRequestToPokemon(request)).thenReturn(pokemon);
-        Mockito.doNothing().when(repository.save(pokemon));
+        Mockito.when(repository.save(pokemon)).thenReturn(pokemon);
 
         // act and assert
         Assertions.assertEquals(response, service.create(request));
