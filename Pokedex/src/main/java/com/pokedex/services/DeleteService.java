@@ -31,7 +31,7 @@ public class DeleteService extends BaseService {
         }
     }
 
-    private void deleteByIdOrName(DeleteRequest request) {
+    protected void deleteByIdOrName(DeleteRequest request) {
         if (request.getId() != null) {
             pokemonRepository.deleteById(request.getId());
         }
@@ -40,7 +40,7 @@ public class DeleteService extends BaseService {
         }
     }
 
-    private void checkDeleteRequestData(DeleteRequest request) throws Exception {
+    protected void checkDeleteRequestData(DeleteRequest request) throws Exception {
         if ((request.getId() == null) && (nullOrEmpty(request.getName()))) {
             throw new Exception("id and name cant both be null, at least one is needed");
         }

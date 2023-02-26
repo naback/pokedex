@@ -2,6 +2,7 @@ package com.pokedex.util;
 
 import com.pokedex.db.Pokemon;
 import com.pokedex.model.CreateRequest;
+import com.pokedex.model.DeleteRequest;
 
 public final class Util {
 
@@ -13,6 +14,13 @@ public final class Util {
         Integer stamina = 100;
 
         return new CreateRequest(id, name, attack, defense, stamina);
+    }
+
+    public static DeleteRequest generateDeleteRequest() {
+        long id = 1l;
+        String name = "Charizard";
+
+        return new DeleteRequest(id, name);
     }
 
     public static Pokemon generateMappedPokemonFromRequest(CreateRequest request) {

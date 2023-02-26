@@ -24,7 +24,7 @@ public class CreateServiceTest {
     private PokemonMapper mapper;
 
     @Test
-    public void createTest_success() {
+    public void create() {
         // arrange
         var request = Util.generateCreateRequest();
         var pokemon = Util.generateMappedPokemonFromRequest(request);
@@ -38,16 +38,20 @@ public class CreateServiceTest {
 
     @Test
     public void checkRequestData_success() {
+        // arrange
         var request = Util.generateCreateRequest();
 
+        // act and assert
         Assertions.assertDoesNotThrow(() -> service.checkCreateRequestData(request));
     }
 
     @Test
     public void checkRequestData_failure() {
+        // arrange
         var request = Util.generateCreateRequest();
         request.setAttack(null);
 
+        // act and assert
         Assertions.assertThrows(Exception.class, () -> service.checkCreateRequestData(request));
     }
 }
