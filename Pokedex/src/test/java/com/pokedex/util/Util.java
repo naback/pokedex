@@ -3,6 +3,11 @@ package com.pokedex.util;
 import com.pokedex.db.Pokemon;
 import com.pokedex.model.CreateRequest;
 import com.pokedex.model.DeleteRequest;
+import com.pokedex.model.ListResponse;
+import org.springframework.http.ResponseEntity;
+
+import java.util.Arrays;
+import java.util.List;
 
 public final class Util {
 
@@ -26,5 +31,17 @@ public final class Util {
     public static Pokemon generateMappedPokemonFromRequest(CreateRequest request) {
         return new Pokemon(request.getId(), request.getName(),
                 request.getAttack(), request.getDefense(), request.getStamina());
+    }
+
+    public static List<Pokemon> getPokemonsDatabaseMockList() {
+        var pokemon1 = new Pokemon(1l, "Charizard", 100, 100, 100);
+        var pokemon2 = new Pokemon(2l, "Pikachu", 50, 50, 50);
+        var pokemon3 = new Pokemon(3l, "Bulbassaur", 70, 70, 70);
+
+        return Arrays.asList(pokemon1, pokemon2, pokemon3);
+    }
+
+    public static ResponseEntity generateListResponse(List<Pokemon> pokemonsMockListFromDatabase) {
+        return ResponseEntity.status(200).body(new ListResponse(pokemonsMockListFromDatabase));
     }
 }
