@@ -1,6 +1,5 @@
 package com.pokedex.services;
 
-import com.google.gson.Gson;
 import com.pokedex.db.Pokemon;
 import com.pokedex.db.PokemonRepository;
 import com.pokedex.mappers.PokemonMapper;
@@ -28,7 +27,7 @@ public class CreateService extends BaseService {
             logger.info("starting create service");
 
             checkCreateRequestData(request);
-            Pokemon pokemon = mapFromRequestToDbObject(request);
+            Pokemon pokemon = pokemonMapper.createRequestToPokemon(request);
             pokemonRepository.save(pokemon);
 
             logger.info("create service finished with success");
@@ -40,11 +39,7 @@ public class CreateService extends BaseService {
         }
     }
 
-    private Pokemon mapFromRequestToDbObject(CreateRequest request) {
-        return pokemonMapper.createRequestToPokemon(request);
-    }
-
-    private void checkCreateRequestData(CreateRequest request) throws Exception {
+    protected void checkCreateRequestData(CreateRequest request) throws Exception {
         if (request.getId() == null) {
             throw new Exception("Parameter name is null! It can't be!");
         }

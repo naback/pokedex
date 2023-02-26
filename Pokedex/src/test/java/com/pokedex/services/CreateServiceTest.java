@@ -11,7 +11,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.Assert;
 
 @ExtendWith(MockitoExtension.class)
 public class CreateServiceTest {
@@ -25,7 +24,7 @@ public class CreateServiceTest {
     private PokemonMapper mapper;
 
     @Test
-    public void createTest() {
+    public void createTest_success() {
         // arrange
         var request = Util.generateCreateRequest();
         var pokemon = Util.generateMappedPokemonFromRequest(request);
@@ -35,5 +34,20 @@ public class CreateServiceTest {
 
         // act and assert
         Assertions.assertEquals(response, service.create(request));
+    }
+
+    @Test
+    public void checkRequestData_success() {
+        var request = Util.generateCreateRequest();
+
+        Assertions.assertDoesNotThrow(() -> service.checkCreateRequestData(request));
+    }
+
+    @Test
+    public void checkRequestData_failure() {
+        var request = Util.generateCreateRequest();
+        request.setAttack(null);
+
+        Assertions.assertThrows(Exception.class, () -> service.checkCreateRequestData(request));
     }
 }
