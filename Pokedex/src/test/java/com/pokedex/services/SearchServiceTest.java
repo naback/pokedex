@@ -11,7 +11,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 
 @ExtendWith(MockitoExtension.class)
 public class SearchServiceTest {
@@ -36,5 +35,14 @@ public class SearchServiceTest {
         Assertions.assertEquals(pokemonToReturn.getAttack(), ((SearchResponse) service.search(pokemonRequested).getBody()).getPokemon().getAttack());
         Assertions.assertEquals(pokemonToReturn.getDefense(), ((SearchResponse) service.search(pokemonRequested).getBody()).getPokemon().getDefense());
         Assertions.assertEquals(pokemonToReturn.getStamina(), ((SearchResponse) service.search(pokemonRequested).getBody()).getPokemon().getStamina());
+    }
+
+    @Test
+    public void checkDeleteRequestData() {
+        // arrange
+        String pokemonRequested = "Charizard";
+
+        // act and assert
+        Assertions.assertDoesNotThrow(() -> service.checkSearchRequestData(pokemonRequested));
     }
 }

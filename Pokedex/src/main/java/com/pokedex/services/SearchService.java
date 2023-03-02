@@ -38,7 +38,7 @@ public class SearchService extends BaseService {
         }
     }
 
-    private void checkSearchRequestData(String pokemon) throws Exception {
+    protected void checkSearchRequestData(String pokemon) throws Exception {
         if (nullOrEmpty(pokemon)) {
             throw new Exception("Parameter name is null! It can't be!");
         }
