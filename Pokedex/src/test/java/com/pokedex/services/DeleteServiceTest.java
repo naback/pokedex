@@ -8,6 +8,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 @ExtendWith(MockitoExtension.class)
@@ -26,6 +27,7 @@ public class DeleteServiceTest {
 //        Mockito.doNothing().when(Mockito.mock(PokemonRepository.class)).deleteById(request.getId());   // unecessary stub
 
         // act and assert
+        Assertions.assertEquals(HttpStatus.OK, service.delete(request).getStatusCode());
         Assertions.assertEquals(response, service.delete(request));
     }
 

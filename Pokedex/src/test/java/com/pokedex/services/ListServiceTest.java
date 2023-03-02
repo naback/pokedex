@@ -10,6 +10,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.http.HttpStatus;
 
 @ExtendWith(MockitoExtension.class)
 public class ListServiceTest {
@@ -25,6 +26,7 @@ public class ListServiceTest {
         var pokemonsMockListFromDatabase = Util.getPokemonsDatabaseMockList();
         Mockito.when(repository.findAll()).thenReturn(pokemonsMockListFromDatabase);
 
+        Assertions.assertEquals(HttpStatus.OK, service.list().getStatusCode());
         Assertions.assertEquals(pokemonsMockListFromDatabase, ((ListResponse) service.list().getBody()).getAllPokemons());
     }
 }
