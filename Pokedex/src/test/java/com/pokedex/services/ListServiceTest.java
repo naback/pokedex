@@ -23,7 +23,6 @@ public class ListServiceTest {
     public void list() {
         // arrange
         var pokemonsMockListFromDatabase = Util.getPokemonsDatabaseMockList();
-        var listResponse = Util.generateListResponse(pokemonsMockListFromDatabase);
         Mockito.when(repository.findAll()).thenReturn(pokemonsMockListFromDatabase);
 
         Assertions.assertEquals(pokemonsMockListFromDatabase, ((ListResponse) service.list().getBody()).getAllPokemons());

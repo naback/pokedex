@@ -4,6 +4,7 @@ import com.pokedex.db.Pokemon;
 import com.pokedex.model.CreateRequest;
 import com.pokedex.model.DeleteRequest;
 import com.pokedex.model.ListResponse;
+import com.pokedex.model.PokemonToReturn;
 import org.springframework.http.ResponseEntity;
 
 import java.util.Arrays;
@@ -19,6 +20,26 @@ public final class Util {
         Integer stamina = 100;
 
         return new CreateRequest(id, name, attack, defense, stamina);
+    }
+
+    public static PokemonToReturn generateCharizardAsPokemonToReturn() {
+        Long id = 1l;
+        String name = "Charizard";
+        Integer attack = 100;
+        Integer defense = 100;
+        Integer stamina = 100;
+
+        return new PokemonToReturn(id, name, attack, defense, stamina);
+    }
+
+    public static Pokemon generateCharizard() {
+        Long id = 1l;
+        String name = "Charizard";
+        Integer attack = 100;
+        Integer defense = 100;
+        Integer stamina = 100;
+
+        return new Pokemon(id, name, attack, defense, stamina);
     }
 
     public static DeleteRequest generateDeleteRequest() {

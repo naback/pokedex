@@ -19,33 +19,23 @@ public class SearchService extends BaseService {
     @Autowired
     private PokemonRepository pokemonRepository;
 
-    private PokemonMapper pokemonMapper
-            = Mappers.getMapper(PokemonMapper.class);
+    private PokemonMapper pokemonMapper = Mappers.getMapper(PokemonMapper.class);
 
     public ResponseEntity search(String pokemonRequested) {
         try {
             logger.info("starting search service");
 
             checkSearchRequestData(pokemonRequested);
-            Pokemon pokemon = searchRequestedPokemon(pokemonRequested);
+            Pokemon pokemon = pokemonRepository.findByName(pokemonRequested);
             checkRetrievedData(pokemon, pokemonRequested);
-            PokemonToReturn pokemonToReturn = mapFromPokemonToPokemonToReturn(pokemon);
+            PokemonToReturn pokemonToReturn = pokemonMapper.pokemonToPokemonToReturn(pokemon);
 
             logger.info("search service finished with success");
             return ResponseEntity.status(200).body(new SearchResponse(pokemonToReturn));
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             logger.error(e.getMessage());
             return ResponseEntity.status(400).body(new BaseResponse(e.getMessage()));
         }
-    }
-
-    private PokemonToReturn mapFromPokemonToPokemonToReturn(Pokemon pokemon) {
-        return pokemonMapper.pokemonToPokemonToReturn(pokemon);
-    }
-
-    private Pokemon searchRequestedPokemon(String pokemonRequested) {
-        return pokemonRepository.findByName(pokemonRequested);
     }
 
     private void checkSearchRequestData(String pokemon) throws Exception {
