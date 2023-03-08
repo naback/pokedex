@@ -34,7 +34,7 @@ public class UpdateService extends BaseService {
         }
     }
 
-    private void updatePokemonData(UpdateRequest request, Pokemon pokemon) {
+    protected void updatePokemonData(UpdateRequest request, Pokemon pokemon) {
         boolean changed = false;
 
         if (!nullOrEmpty(request.getName())) {
@@ -62,7 +62,7 @@ public class UpdateService extends BaseService {
         }
     }
 
-    private void checkUpdateData(String pokemonToUpdate, UpdateRequest request) throws Exception {
+    protected void checkUpdateData(String pokemonToUpdate, UpdateRequest request) throws Exception {
         if (nullOrEmpty(pokemonToUpdate)) {
             throw new Exception("There was no pokemon name received as parameter in the url. There must be one!");
         }
@@ -76,7 +76,7 @@ public class UpdateService extends BaseService {
         }
     }
 
-    private boolean allUpdateRequestParametersAreNull(UpdateRequest request) {
+    protected boolean allUpdateRequestParametersAreNull(UpdateRequest request) {
         if ((request.getName() == null) && (request.getAttack() == null) && (request.getDefense() == null) && (request.getStamina() == null)) {
             return true;
         }
