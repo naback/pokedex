@@ -1,10 +1,7 @@
 package com.pokedex.util;
 
 import com.pokedex.db.Pokemon;
-import com.pokedex.model.CreateRequest;
-import com.pokedex.model.DeleteRequest;
-import com.pokedex.model.ListResponse;
-import com.pokedex.model.PokemonToReturn;
+import com.pokedex.model.*;
 import org.springframework.http.ResponseEntity;
 
 import java.util.Arrays;
@@ -64,5 +61,13 @@ public final class Util {
 
     public static ResponseEntity generateListResponse(List<Pokemon> pokemonsMockListFromDatabase) {
         return ResponseEntity.status(200).body(new ListResponse(pokemonsMockListFromDatabase));
+    }
+
+    public static UpdateRequest createUpdateRequest() {
+        String name = null;
+        Integer attack = 300;
+        Integer defense = 300;
+        Integer stamina = 300;
+        return new UpdateRequest(name, attack, defense, stamina);
     }
 }
